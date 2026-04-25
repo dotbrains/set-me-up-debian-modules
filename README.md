@@ -17,6 +17,7 @@ debian/
 │   └── insync/
 ├── development-tools/
 │   ├── code/
+│   ├── cursor/
 │   ├── gitkraken/
 │   ├── insomnia/
 │   ├── jetbrains-toolbox/
