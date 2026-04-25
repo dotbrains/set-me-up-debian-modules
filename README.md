@@ -22,7 +22,8 @@ debian/
 │   ├── jetbrains-toolbox/
 │   ├── macports/
 │   ├── rancher-desktop/
-│   └── xcode/
+│   ├── xcode/
+│   └── zed/
 ├── fonts/
 │   ├── fira-code/
 │   └── jetbrains-mono/
