@@ -12,13 +12,18 @@ declare current_dir &&
 main() {
 
     if ! is_debian; then
-        error "This script is only for Debian!"
+        error "These modules are only for Debian-based systems!"
         return 1
     fi
 
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    ask_for_sudo
 
-    apt_install_from_file "packages"
+    while IFS= read -r -d '' packages_file; do
+        (
+            cd "$(dirname "$packages_file")" &&
+                apt_install_from_file "$(basename "$packages_file")"
+        )
+    done < <(find . -type f -name "packages" -print0)
 
 }
 
