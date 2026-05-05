@@ -1,0 +1,4 @@
+#!/bin/bash
+# shellcheck source=/dev/null
+# smu --status marker: exit 0 if JetBrainsMono Nerd Font files are present.
+compgen -G "$HOME/.local/share/fonts/JetBrainsMono*" > /dev/null
