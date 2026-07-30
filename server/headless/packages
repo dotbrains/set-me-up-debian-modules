@@ -1,0 +1,11 @@
+# server/headless
+apt "ca-certificates"
+apt "curl"
+apt "git"
+apt "gnupg"
+apt "jq"
+apt "rsync"
+apt "tmux"
+apt "unzip"
+apt "ufw"
+apt "vim"

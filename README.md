@@ -28,6 +28,8 @@ debian/
 │   └── jetbrains-mono/
 ├── media/
 │   └── spotify/
+├── server/
+│   └── headless/
 ├── security/
 │   ├── 1password/
 │   └── nordvpn/
@@ -80,6 +82,18 @@ The seven custom-script modules in this tree (`cursor`, `zed`, `jetbrains-toolbo
 ## Usage
 
 These modules are designed to be used as submodules within the [`set-me-up` blueprint](https://github.com/dotbrains/set-me-up-blueprint) repository.
+
+For a headless Ubuntu/Debian VPS, including a DigitalOcean Droplet, provision
+the targeted server-safe module instead of bulk-installing this full
+workstation-oriented repository:
+
+```bash
+smu --provision --modules server/headless --no-base
+```
+
+The `server/headless` module intentionally stays small: transport, Git,
+archive, JSON, terminal multiplexer, editor, sync, and firewall packages that
+are suitable for a fresh SSH-only host.
 
 ## License
 
