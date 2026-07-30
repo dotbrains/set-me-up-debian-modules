@@ -29,7 +29,8 @@ debian/
 ├── media/
 │   └── spotify/
 ├── server/
-│   └── headless/
+│   ├── headless/
+│   └── security/
 ├── security/
 │   ├── 1password/
 │   └── nordvpn/
@@ -92,8 +93,15 @@ smu --provision --modules server/headless --no-base
 ```
 
 The `server/headless` module intentionally stays small: transport, Git,
-archive, JSON, terminal multiplexer, editor, sync, and firewall packages that
-are suitable for a fresh SSH-only host.
+archive, JSON, terminal multiplexer, editor, and sync packages that are
+suitable for a fresh SSH-only host.
+
+Add the focused security baseline when you want host-level firewall and SSH
+brute-force protection packages:
+
+```bash
+smu --provision --modules server/security --no-base
+```
 
 ## License
 

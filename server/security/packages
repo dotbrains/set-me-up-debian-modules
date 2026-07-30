@@ -1,0 +1,3 @@
+# server/security
+apt "fail2ban"
+apt "ufw"
