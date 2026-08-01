@@ -1,0 +1,9 @@
+id = "cloud-sync/insync"
+trust = "first-party"
+network = true
+requires_sudo = true
+writes = []
+rollback = "partial"
+
+[adapters.rcm]
+path = "."
