@@ -2,7 +2,7 @@
 
 [![License: PolyForm Shield 1.0.0](https://img.shields.io/badge/License-PolyForm%20Shield%201.0.0-blue.svg)](https://polyformproject.org/licenses/shield/1.0.0)
 
-This repository contains granular Debian/Linux modules for the [`set-me-up`](https://github.com/dotbrains/set-me-up) project.
+This repository contains granular Debian/Linux modules for the [`set-me-up`](https://github.com/smeltery/set-me-up) project.
 
 ## Structure
 
@@ -46,7 +46,7 @@ Each module directory contains one of:
 - **`packages`** — most common. A small DSL parsed by `apt_install_from_file` that declares `apt`, `deb`, `snap`, `ppa`, `gpg`, and `source` directives. Reversed declaratively by `apt_remove_from_file`.
 - **`<name>.sh`** — used when an install can't be expressed as `packages` alone (custom apt repos with signing keys, vendor installer scripts, font downloads, etc.). Most `*.sh` modules ship a sibling `packages` file too: the install script handles the bespoke setup, the `packages` file declares shared dependencies. See `development-tools/cursor/`, `security/nordvpn/`, `fonts/fira-code/`.
 
-The `smu` installer resolves a module by name and runs whichever artifact it finds. See the [installer README](https://github.com/dotbrains/set-me-up-installer#discovering-modules) for the full module-resolution rules and the `-p` / `-i` / `-l` flags.
+The `smu` installer resolves a module by name and runs whichever artifact it finds. See the [installer README](https://github.com/smeltery/set-me-up-installer#discovering-modules) for the full module-resolution rules and the `-p` / `-i` / `-l` flags.
 
 ## OS guarding
 
@@ -78,11 +78,11 @@ For `*.sh` modules `smu` only acts when the module ships two opt-in sibling file
 
 If a `*.sh` module shares its directory with a `packages` file (the common case in this tree), `smu --uninstall` runs **both** inverses in order: the per-module `<name>.uninstall.sh` first (apt repo, signing key, the named package, vendor dirs), then `apt_remove_from_file packages` (shared dependencies declared in the `packages` file). Each uninstaller therefore only undoes what *its* install script added — never the packages-file deps — so they compose cleanly.
 
-The seven custom-script modules in this tree (`cursor`, `zed`, `jetbrains-toolbox`, `rancher-desktop`, `nordvpn`, `fira-code`, `jetbrains-mono`) all ship `<name>.installed` and `<name>.uninstall.sh` siblings and are fully reversible. See the [installer README](https://github.com/dotbrains/set-me-up-installer#auditing-whats-installed) for the full status/uninstall reference and authoring examples.
+The seven custom-script modules in this tree (`cursor`, `zed`, `jetbrains-toolbox`, `rancher-desktop`, `nordvpn`, `fira-code`, `jetbrains-mono`) all ship `<name>.installed` and `<name>.uninstall.sh` siblings and are fully reversible. See the [installer README](https://github.com/smeltery/set-me-up-installer#auditing-whats-installed) for the full status/uninstall reference and authoring examples.
 
 ## Usage
 
-These modules are designed to be used as submodules within the [`set-me-up` blueprint](https://github.com/dotbrains/set-me-up-blueprint) repository.
+These modules are designed to be used as submodules within the [`set-me-up` blueprint](https://github.com/smeltery/set-me-up-blueprint) repository.
 
 For a headless Ubuntu/Debian VPS, including a DigitalOcean Droplet, provision
 the targeted server-safe module instead of bulk-installing this full
